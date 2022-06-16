@@ -3,10 +3,6 @@ management:
     web:
       exposure:
         include: "*"
-#    server:
-#      request:
-#        autotime:
-#          percentiles: 0.95
   endpoint:
     health:
       show-components: always
@@ -14,12 +10,16 @@ management:
       probes:
         enabled: true
   metrics:
+    enable:
+      jvm: false
     distribution:
       percentiles:
         http:
           server:
-            requests: 0.5,0.9,0.95,0.99,0.999
+            requests: 0.01,0.05,0.5,0.9,0.99,1
       percentiles-histogram:
         http:
           server:
             requests: true
+      maximum-expected-value:
+        http.server.requests: 5s
