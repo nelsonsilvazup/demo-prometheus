@@ -1,0 +1,25 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+#    server:
+#      request:
+#        autotime:
+#          percentiles: 0.95
+  endpoint:
+    health:
+      show-components: always
+      show-details: always
+      probes:
+        enabled: true
+  metrics:
+    distribution:
+      percentiles:
+        http:
+          server:
+            requests: 0.5,0.9,0.95,0.99,0.999
+      percentiles-histogram:
+        http:
+          server:
+            requests: true
